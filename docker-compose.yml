@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  ms-reyga-betest:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - REDIS_HOST=redis_reyga_betest
+      - REDIS_PORT=6379
+      - MONGO_URI=mongodb://db_reyga_betest:27017/db_reyga_betest
+    depends_on:
+      redis_reyga_betest:
+        condition: service_started
+
+  redis_reyga_betest:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  db_reyga_betest:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.stats()"]
+      interval: 30s
+      timeout: 10s
+      retries: 5

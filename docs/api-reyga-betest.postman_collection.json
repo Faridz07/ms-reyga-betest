@@ -1,0 +1,1255 @@
+{
+	"info": {
+		"_postman_id": "1aea5bc8-4cd0-4407-b981-5345a683d4a4",
+		"name": "api-reyga-betest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19793603",
+		"_collection_link": "https://www.postman.com/restless-water-254194/workspace/public/collection/19793603-1aea5bc8-4cd0-4407-b981-5345a683d4a4?action=share&source=collection_link&creator=19793603"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTI1NjE4MiwiZXhwIjoxNzA1MjU5NzgyfQ.ew8OfA9329nj-3eAXVfDX8m03ufwHFqOkRMtT9vTYIs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"user-a\",\n    \"accountNumber\": \"1234567890987654321\",\n    \"emailAddress\": \"user-a@example.com\",\n    \"identityNumber\": \"9876543210123456789\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ERROR-Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"testuser\",\n    \"accountNumber\": \"123456789\",\n    \"emailAddress\": \"test@example.com\",\n    \"identityNumber\": \"987654321\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-Y/9DhNk+fkg6hkvizDVGX7cBV4I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:11:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "ERROR-User Already Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"user-a\",\n    \"accountNumber\": \"1234567890987654321\",\n    \"emailAddress\": \"user-a@example.com\",\n    \"identityNumber\": \"9876543210123456789\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-0T6/AhXjI8qP7wKMxXSQ4auMIUw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:34:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 409,\n    \"message\": \"User already exists.\"\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"user-a\",\n    \"accountNumber\": \"1234567890987654321\",\n    \"emailAddress\": \"user-a@example.com\",\n    \"identityNumber\": \"9876543210123456789\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-EhW2U+uPkuubwY4EEAUrL7xntEY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 201,\n    \"message\": \"User created successfully.\",\n    \"data\": {\n        \"id\": \"ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7\",\n        \"userName\": \"user-a\",\n        \"accountNumber\": \"1234567890987654321\",\n        \"emailAddress\": \"user-a@example.com\",\n        \"identityNumber\": \"9876543210123456789\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User by Account Number",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTI1MzcxOSwiZXhwIjoxNzA1MjU3MzE5fQ.fxzJ_IfoyVZF_qr-IgtmMyd72b6UdXB6F_6o6A160o0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/account/:accountNumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"account",
+								":accountNumber"
+							],
+							"variable": [
+								{
+									"key": "accountNumber",
+									"value": "1234567890987654321"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ERROR-Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/account/:accountNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"account",
+										":accountNumber"
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "1234567890987654321"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-M3B5cIJ2aaFBPz9+94DmXVftlSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:49:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "ERROR-User Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/account/:accountNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"account",
+										":accountNumber"
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "1234567890987654325"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-njE0CTkZUJw29gbpP8T04DWvGjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:49:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"User not found.\"\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/account/:accountNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"account",
+										":accountNumber"
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "1234567890987654321"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-7WnXdrXZHtwxEP3aPVRtUyhjokg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:48:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"User fetched successfully.\",\n    \"data\": {\n        \"id\": \"ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7\",\n        \"userName\": \"user-a\",\n        \"accountNumber\": \"1234567890987654321\",\n        \"emailAddress\": \"user-a@example.com\",\n        \"identityNumber\": \"9876543210123456789\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User by Identity Number",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTI1NDY2NCwiZXhwIjoxNzA1MjU4MjY0fQ._rIBvCJ5p5rYcBMb8L1Oi_EIn_MvuEZgKbKVYLZ_VQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/identity/:identityNumber",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"identity",
+								":identityNumber"
+							],
+							"variable": [
+								{
+									"key": "identityNumber",
+									"value": "9876543210123456789"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ERROR-Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/identity/:identityNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"identity",
+										":identityNumber"
+									],
+									"variable": [
+										{
+											"key": "identityNumber",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-M3B5cIJ2aaFBPz9+94DmXVftlSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:50:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "ERROR-User Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/identity/:identityNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"identity",
+										":identityNumber"
+									],
+									"variable": [
+										{
+											"key": "identityNumber",
+											"value": "9876543210123456780"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-njE0CTkZUJw29gbpP8T04DWvGjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:53:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"User not found.\"\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/identity/:identityNumber",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"identity",
+										":identityNumber"
+									],
+									"variable": [
+										{
+											"key": "identityNumber",
+											"value": "9876543210123456789"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-7WnXdrXZHtwxEP3aPVRtUyhjokg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:53:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"User fetched successfully.\",\n    \"data\": {\n        \"id\": \"ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7\",\n        \"userName\": \"user-a\",\n        \"accountNumber\": \"1234567890987654321\",\n        \"emailAddress\": \"user-a@example.com\",\n        \"identityNumber\": \"9876543210123456789\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTI1NDY2NCwiZXhwIjoxNzA1MjU4MjY0fQ._rIBvCJ5p5rYcBMb8L1Oi_EIn_MvuEZgKbKVYLZ_VQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"updated-user-a\",\n    \"emailAddress\": \"updated-user-a@example.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ERROR-Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"updatedUser\",\n    \"emailAddress\": \"updated@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-M3B5cIJ2aaFBPz9+94DmXVftlSM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 17:54:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "ERROR-User Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"updated-user-a\",\n    \"emailAddress\": \"updated-user-a@example.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "65a41b31168422e2224dc713"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-njE0CTkZUJw29gbpP8T04DWvGjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 18:12:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"User not found.\"\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"updated-user-a\",\n    \"emailAddress\": \"updated-user-a@example.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "253"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fd-kRoxHThUAmtoUwyWBiXjQJj1M+Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 18:12:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"User updated successfully.\",\n    \"data\": {\n        \"userName\": \"updated-user-a\",\n        \"accountNumber\": \"1234567890987654321\",\n        \"emailAddress\": \"updated-user-a@example.com\",\n        \"identityNumber\": \"9876543210123456789\",\n        \"id\": \"ffb4b87d-3fd5-4ae0-947c-f8e31bf840c7\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTI1NDY2NCwiZXhwIjoxNzA1MjU4MjY0fQ._rIBvCJ5p5rYcBMb8L1Oi_EIn_MvuEZgKbKVYLZ_VQ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7f2f00d5-8e57-402b-b866-1354d4ffdf25"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ERROR-Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-Y/9DhNk+fkg6hkvizDVGX7cBV4I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 18:13:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthorized\"\n}"
+						},
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7f2f00d5-8e57-402b-b866-1354d4ffdf25"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ed-q/w2bxcGjQbLZnunextypE75CbQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 18:16:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"message\": \"User deleted successfully.\",\n    \"data\": {\n        \"userName\": \"user-a\",\n        \"accountNumber\": \"1234567890987654321\",\n        \"emailAddress\": \"user-a@example.com\",\n        \"identityNumber\": \"9876543210123456789\",\n        \"id\": \"7f2f00d5-8e57-402b-b866-1354d4ffdf25\"\n    }\n}"
+						},
+						{
+							"name": "ERROR-User Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/users/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7f2f00d5-8e57-402b-b866-1354d4ffdf25"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-njE0CTkZUJw29gbpP8T04DWvGjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 14 Jan 2024 18:16:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"message\": \"User not found.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Generate Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/generate-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"generate-token"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SUCCESS",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/generate-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"generate-token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "159"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9f-VDh3w+AmoURZ5cmT2aC6uAayNC0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 14 Jan 2024 08:39:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGVzdCIsImlzc3VlciI6Im1zLXJleWdhLWJldGVzdCIsImlhdCI6MTcwNTIyMTczNywiZXhwIjoxNzA1MjI1MzM3fQ.KQpdaKp1XSSHSkdYiT-25bCPYOqDOMH8iwhIp8yIpC0\"\n}"
+				}
+			]
+		}
+	]
+}
